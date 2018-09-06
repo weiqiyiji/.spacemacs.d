@@ -305,6 +305,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
         '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
           ("org-cn"   . "http://elpa.emacs-china.org/org/")
           ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+  (setq-default dotspacemacs-default-font '("Source Code Pro"
+                                            :size 15
+                                            :weight normal
+                                            :width normal
+                                            :powerline-scale 1.1))
+  (setq-default dotspacemacs-line-numbers t)
   )
 
 (defun dotspacemacs/user-config ()
@@ -317,11 +323,16 @@ you should place your code here."
   (when (eq system-type 'darwin) ;; mac specific settings
     (setq mac-option-modifier 'alt)
     (setq mac-command-modifier 'meta)
+    (setq ns-use-srgb-colorspace nil)
+    (setq powerline-default-separator 'utf-8)
     (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
     )
-  (when (version<= "26.0.50" emacs-version )
-    (global-display-line-numbers-mode))
   )
+
+
+(defun font-exists-p (font)
+  (if (null (x-list-fonts font))
+      nil t))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
