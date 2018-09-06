@@ -16,7 +16,7 @@
         ))
 
 (defun protobuf/post-init-flycheck ()
-  (spacemacs/enable-flycheck 'protobuf-mode))
+  (spacemacs/add-flycheck-hook 'protobuf-mode))
 
 (defun protobuf/init-protobuf-mode ()
   (use-package protobuf-mode
